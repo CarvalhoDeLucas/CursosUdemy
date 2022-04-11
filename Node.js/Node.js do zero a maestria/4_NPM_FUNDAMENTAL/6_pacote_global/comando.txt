@@ -1,0 +1,9 @@
+Comando para instalar um pagode global
+
+--> npm install -g lodash
+
+-- com o -g o pacote será instalado de forma global
+
+--> npm link <pacote>
+
+Caso seja necessário que os pacotes estejam no diretório

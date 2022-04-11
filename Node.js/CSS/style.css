@@ -1,0 +1,268 @@
+h1 {
+    color: red;
+}
+
+p {
+    color: blue;
+}
+
+h2 {
+    color: green;
+    text-align: center;
+    font-size: 50px;
+}
+
+/* 
+    Classes e IDs
+*/
+.p-texto {
+    color: lightgreen;
+}
+
+#titulo-app {
+   color: royalblue; 
+}
+
+/* Específico */
+
+div p {
+    color: red;
+}
+
+.p-dentro-da-div {
+    color: blue;
+}
+
+#p-super-especifico {
+    color: green;
+}
+
+/* Cores */
+.nome {
+    color: orange;
+}
+
+.hexa {
+    color: #6a40c4;
+}
+
+.rgba {
+    /* O último número é a transparencia da cor */
+    color: rgba(17, 197, 214, .2);
+    font-size: 40px;
+}
+
+/* Backgrounds */
+.dic-background {
+    background-image: url('img/ocean.jpeg');
+    height: 300px;
+}
+
+.titulo-background {
+    background-color: #000;
+    text-align: center;
+    color: #FFF;
+}
+
+/* Fontes */
+.family {
+    color: #000;
+    font-size: 40px;
+}
+
+.family.serif {
+    color: green;
+}
+
+.serif {
+    font-family: 'times new roman';
+}
+
+.sans-serif {
+    font-family: arial;
+}
+
+.monospace {
+    font-family: 'Courier New';
+}
+
+.italic {
+    font-style: italic;
+}
+
+.oblique {
+    font-style: oblique;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.variant {
+    font-variant: small-caps;
+}
+
+body {
+    margin: 0;
+}
+
+/* Box Model */
+.boxmodel {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    /* Geral */
+    /* padding: 20px; */
+    /* Especifico */
+    /*
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    */
+    /* Especifico agrupado */
+    /* padding: 30px 20px 5px 10px; */
+    /* Especifico agrupado 3 medidas - top, right-left, bottom */
+    /* padding: 30px 20px 5px; */
+    /* Especifico agrupado 2 medidas - top-bottom, right-left */
+    padding: 30px 20px;
+    border: 10px solid blue;
+    border-radius: 10px;
+    margin: 50px;
+    /* Deixa os elementos um do lado do outro, em bloco */
+    display: inline-block;
+}
+
+.paragrafo-box {
+    color: #000;
+    margin: 0;
+}
+
+/* Positions */
+/* static */
+/* relative */
+/* fixed */
+/* absolute */
+/* stick */
+
+.div-position {
+    width: 500px;
+    height: 500px;
+    background-color: red;
+}
+
+.static {
+    position: static;
+    top: 100px;
+}
+
+.relative {
+    position: relative;
+    background-color: blue;
+    top: 100px;
+    left: 50px;
+}
+
+.absolute {
+    position: absolute;
+    background-color: purple;
+    top: 0px;
+    right: 0px;
+}
+
+.fixed {
+    position: fixed;
+    height: 200px;
+    background-color: yellow;
+    bottom: 0;
+    right: 0;
+
+}
+
+.sticky {
+    position: sticky;
+    background-color: grey;
+    top: 10px
+}
+
+/* Float */
+.container {
+    padding: 50px;
+}
+
+.div-float {
+    overflow: auto;
+}
+
+.img-float {
+    width: 200px;
+    height: 200px;
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.p-float {
+    color: #000;
+}
+
+.clear {
+    clear: both;
+}
+
+/* Unidades de medidas  */
+.pixel-1 {
+    background-color: red;
+    width: 100px;
+    height: 100px;
+}
+
+.pixel-2 {
+    background-color: blue;
+    width: 500px;
+    height: 50px;
+}
+
+.pai-porcentagem {
+    width: 500px;
+    height: 500px;
+    background-color: #000;
+}
+
+.porcentagem-1 {
+    width: 50%;
+    height: 50%;
+    background-color: yellow;
+}
+
+.porcentagem-2 {
+    width: 50%;
+    height: 50%;
+    background-color: #000;
+}
+
+.pai-em {
+    font-size: 50px;
+}
+
+.em-1 {
+    width: .5em;
+    height: 2em;
+    background-color: purple;
+}
+
+html {
+    font-size: 20px;
+}
+
+.rem-1 {
+    width: 1rem;
+    height: 1rem;
+    background-color: orange;
+}
+
+.rem-2 {
+    font-size: 2rem;
+}

@@ -1,0 +1,5 @@
+Primeiro iniciar o projeto
+--> npm init
+
+Segundo, baixar o express
+--> npm install express

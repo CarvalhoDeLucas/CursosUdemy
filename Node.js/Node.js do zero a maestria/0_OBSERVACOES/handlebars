@@ -1,0 +1,8 @@
+Trocar 
+
+--> app.engine('handlebars', exphbs())
+
+por
+
+--> app.engine('handlebars', exphbs.engine())
+

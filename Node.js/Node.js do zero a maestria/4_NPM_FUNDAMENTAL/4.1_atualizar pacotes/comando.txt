@@ -1,0 +1,3 @@
+Comando para checar se há pacotes que precisam de update.
+
+--> npx npm-check-updates -u
