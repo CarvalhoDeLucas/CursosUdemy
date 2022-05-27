@@ -1,6 +1,7 @@
 package io.curso.vendas.domain.entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 @Entity
@@ -16,7 +17,7 @@ public class Produto {
     private String descricao;
 
     @Column(name = "preco_unitario", precision = 20, scale = 2)
-    private BigInteger preco;
+    private BigDecimal preco;
 
     public Integer getId() {
         return id;
@@ -34,11 +35,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public BigInteger getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(BigInteger preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 }
