@@ -1,5 +1,6 @@
 package io.curso.vendas.rest.controller;
 
+import io.curso.vendas.exception.PedidoNaoEncontratoException;
 import io.curso.vendas.exception.RegraNegocioException;
 import io.curso.vendas.rest.ApiErrors;
 import org.springframework.http.HttpStatus;
@@ -13,8 +14,13 @@ public class ApplicationControllerAdvice {
     @ExceptionHandler(RegraNegocioException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiErrors handleRegraNegocioException(RegraNegocioException ex) {
-        String messageError = ex.getMessage();
-        return new ApiErrors((messageError));
+        return new ApiErrors(ex.getMessage());
+    }
+
+    @ExceptionHandler(PedidoNaoEncontratoException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiErrors handlePedidoNaoEncontrado(PedidoNaoEncontratoException ex) {
+        return new ApiErrors( ex.getMessage());
     }
 
 }

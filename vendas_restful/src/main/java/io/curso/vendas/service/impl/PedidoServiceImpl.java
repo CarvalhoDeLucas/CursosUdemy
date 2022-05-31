@@ -4,10 +4,12 @@ import io.curso.vendas.domain.entity.Cliente;
 import io.curso.vendas.domain.entity.ItemPedido;
 import io.curso.vendas.domain.entity.Pedido;
 import io.curso.vendas.domain.entity.Produto;
+import io.curso.vendas.domain.enuns.StatusPedido;
 import io.curso.vendas.domain.repository.Clientes;
 import io.curso.vendas.domain.repository.ItensPedido;
 import io.curso.vendas.domain.repository.Pedidos;
 import io.curso.vendas.domain.repository.Produtos;
+import io.curso.vendas.exception.PedidoNaoEncontratoException;
 import io.curso.vendas.exception.RegraNegocioException;
 import io.curso.vendas.rest.dto.ItensPedidoDTO;
 import io.curso.vendas.rest.dto.PedidoDTO;
@@ -18,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,6 +44,7 @@ public class PedidoServiceImpl implements PedidoService {
         pedido.setTotal(dto.getTotal());
         pedido.setDataPedido(LocalDate.now());
         pedido.setCliente(cliente);
+        pedido.setStatus(StatusPedido.REALIZADO);
 
         List<ItemPedido> itensPedidos = converterItens(pedido, dto.getItens());
 
@@ -50,6 +54,21 @@ public class PedidoServiceImpl implements PedidoService {
         pedido.setItens(itensPedidos);
 
         return pedido;
+    }
+
+    @Override
+    public Optional<Pedido> obterPedidoCompleto(Integer id) {
+        return pedidos.findByIdFetchItens(id);
+    }
+
+    @Override
+    @Transactional
+    public void atualizaStatus(Integer id, StatusPedido statusPedido) {
+        pedidos.findById(id)
+                .map(pedido -> {
+                    pedido.setStatus(statusPedido);
+                    return pedidos.save(pedido);
+                }).orElseThrow(() -> new PedidoNaoEncontratoException());
     }
 
     private List<ItemPedido> converterItens(Pedido pedido, List<ItensPedidoDTO> itens) {
