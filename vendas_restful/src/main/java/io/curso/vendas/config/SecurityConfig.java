@@ -1,6 +1,9 @@
 package io.curso.vendas.config;
 
+import io.curso.vendas.service.impl.UsuarioServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -11,6 +14,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private UsuarioServiceImpl usuarioService;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -18,11 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .passwordEncoder(passwordEncoder())
-                .withUser("fulano")
-                .password(passwordEncoder().encode("123"))
-                .roles("USER");
+        auth.userDetailsService(usuarioService).passwordEncoder(passwordEncoder());
     }
 
     @Override
@@ -35,7 +37,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .hasAnyRole("USER", "ADMIN")
                     .antMatchers("/api/pedidos/**")
                         .hasAnyRole("USER", "ADMIN")
+                    .antMatchers(HttpMethod.POST, "/api/usuarios/**")
+                        .permitAll()
+                    .anyRequest().authenticated()
                 .and()
-                .formLogin();
+                .httpBasic();
     }
 }
