@@ -1,4 +1,4 @@
-package io.curso.vendas;
+package io.curso.vendas.security.jwt;
 
 import io.curso.vendas.domain.entity.Usuario;
 import io.jsonwebtoken.Claims;
@@ -58,5 +58,4 @@ public class JwtService {
     public String obterLoginUsuario(String token) throws ExpiredJwtException {
         return (String) obterClaims(token).getSubject();
     }
-
 }
